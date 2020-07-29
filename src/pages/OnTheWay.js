@@ -8,9 +8,9 @@ import { useQuery } from "@apollo/react-hooks";
 
 import gql from "graphql-tag";
 
-const GET_PLATFORM_PAGE = gql`
+const GET_ON_THE_WAY_PAGE = gql`
   query {
-    PlatformPage(id: "platformPage") {
+    OnTheWayPage(id: "onTheWayPage") {
       title
       description
       cars {
@@ -35,22 +35,22 @@ const GET_PLATFORM_PAGE = gql`
   }
 `;
 
-const Platform = () => {
-  const { loading, error, data } = useQuery(GET_PLATFORM_PAGE);
+const OnTheWay = () => {
+  const { loading, error, data } = useQuery(GET_ON_THE_WAY_PAGE);
 
   if (loading) return "Загрузка...";
   if (error) return `Ошибка! ${error.message}`;
 
   return (
     <Layout>
-      <SEO title={data.PlatformPage.title} />
+      <SEO title={data.OnTheWayPage.title} />
       <CarList
-        title={data.PlatformPage.title}
-        description={data.PlatformPage.description}
-        cars={data.PlatformPage.cars}
+        title={data.OnTheWayPage.title}
+        description={data.OnTheWayPage.description}
+        cars={data.OnTheWayPage.cars}
       />
     </Layout>
   );
 };
 
-export default Platform;
+export default OnTheWay;

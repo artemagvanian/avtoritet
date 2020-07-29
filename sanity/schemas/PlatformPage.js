@@ -1,6 +1,6 @@
 export default {
-  title: "About Page",
-  name: "aboutPage",
+  title: "Platform Page",
+  name: "platformPage",
   type: "document",
   __experimental_actions: ["update", "publish"],
   fields: [
@@ -10,20 +10,15 @@ export default {
       type: "string",
     },
     {
-      title: "Upper Banner",
-      name: "upperBanner",
-      type: "image",
-    },
-    {
-      title: "Lower Banner",
-      name: "lowerBanner",
-      type: "image",
-    },
-    {
       title: "Description",
       name: "description",
+      type: "text",
+    },
+    {
+      title: "Cars",
+      name: "cars",
       type: "array",
-      of: [{ type: "block" }],
+      of: [{ type: "carForSale" }],
     },
   ],
 };

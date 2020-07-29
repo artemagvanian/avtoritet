@@ -7,7 +7,7 @@ import SEO from "../components/SEO";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
-import { Col, Row, Container, Image } from "react-bootstrap";
+import { Col, Row, Container, Image, Media } from "react-bootstrap";
 import BlockContent from "@sanity/block-content-to-react";
 
 import mapboxgl from "mapbox-gl";
@@ -31,11 +31,20 @@ const GET_HOME_PAGE = gql`
           }
         }
       }
+      mediaLinks {
+        title
+        icon {
+          asset {
+            url
+          }
+        }
+        link
+      }
     }
   }
 `;
 
-function Home() {
+const Home = () => {
   const { loading, error, data } = useQuery(GET_HOME_PAGE);
 
   const mapContainer = useCallback((element) => {
@@ -54,8 +63,8 @@ function Home() {
     }
   }, []);
 
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
+  if (loading) return "Загрузка...";
+  if (error) return `Ошибка! ${error.message}`;
 
   return (
     <Layout>
@@ -79,19 +88,47 @@ function Home() {
         </Row>
       </Container>
       <Container className="my-5">
-        <h1 className="text-center">Как нас можно найти</h1>
-        <p className="text-center lead">ул. Бахчиванджи 24а, Мариуполь</p>
-        <div className="my-5">
-          <div
-            ref={mapContainer}
-            style={{
-              width: "100%",
-              height: 500,
-            }}
-          />
-        </div>
+        <Row>
+          <Col>
+            <h1 className="text-center">Как нас можно найти</h1>
+            <p className="text-center lead">ул. Бахчиванджи 24а, Мариуполь</p>
+            <div className="my-5">
+              <div
+                ref={mapContainer}
+                style={{
+                  width: "100%",
+                  height: 500,
+                }}
+              />
+            </div>
+          </Col>
+          <Col style={{ display: "flex" }}>
+            <div style={{ margin: "auto" }}>
+              <h1 className="text-center">Мы в соцсетях</h1>
+              <ul className="list-unstyled mt-5">
+                {data.HomePage.mediaLinks.map((media, index) => (
+                  <Media as="li" key={index}>
+                    <img
+                      width={64}
+                      height={64}
+                      className="mr-3"
+                      src={media.icon.asset.url + "?h=64&w=64&fit=min"}
+                      alt="Generic placeholder"
+                    />
+                    <Media.Body style={{ margin: "auto" }}>
+                      <h5>
+                        <a href={media.link}>{media.title}</a>
+                      </h5>
+                    </Media.Body>
+                  </Media>
+                ))}
+              </ul>
+            </div>
+          </Col>
+        </Row>
       </Container>
     </Layout>
   );
-}
+};
+
 export default Home;

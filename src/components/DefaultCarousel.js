@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel, Container } from "react-bootstrap";
 
-function DefaultCarousel({ data }) {
+const DefaultCarousel = ({ data }) => {
   return (
     <Container className="mt-4">
       <Carousel>
@@ -20,6 +20,6 @@ function DefaultCarousel({ data }) {
       </Carousel>
     </Container>
   );
-}
+};
 
 export default DefaultCarousel;

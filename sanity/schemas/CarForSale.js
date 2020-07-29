@@ -1,7 +1,7 @@
 export default {
   title: "Car for Sale",
   name: "carForSale",
-  type: "document",
+  type: "object",
   fields: [
     { title: "Brand", name: "brand", type: "string" },
     { title: "Model", name: "model", type: "string" },
@@ -20,7 +20,4 @@ export default {
     { title: "Photos", name: "photos", type: "array", of: [{ type: "image" }] },
     { title: "Sold", name: "sold", type: "boolean" },
   ],
-  initialValue: {
-    sold: false,
-  },
 };

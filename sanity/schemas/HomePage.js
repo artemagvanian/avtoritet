@@ -21,5 +21,11 @@ export default {
       type: "array",
       of: [{ type: "carouselItem" }],
     },
+    {
+      title: "Media Links",
+      name: "mediaLinks",
+      type: "array",
+      of: [{ type: "mediaLink" }],
+    },
   ],
 };

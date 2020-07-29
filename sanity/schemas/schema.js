@@ -5,17 +5,25 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import CarForSale from "./CarForSale";
 import Partner from "./Partner";
-import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
 import CarouselItem from "./CarouselItem";
+import MediaLink from "./MediaLink";
+import CurrentOffer from "./CurrentOffer";
+import HomePage from "./HomePage";
+import PlatformPage from "./PlatformPage";
+import OnTheWayPage from "./OnTheWayPage";
+import PartnerPage from "./PartnerPage";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
-    HomePage,
-    AboutPage,
     CarForSale,
     Partner,
     CarouselItem,
+    MediaLink,
+    CurrentOffer,
+    HomePage,
+    PlatformPage,
+    OnTheWayPage,
+    PartnerPage,
   ]),
 });

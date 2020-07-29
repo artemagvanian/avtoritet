@@ -1,7 +1,7 @@
 export default {
   title: "Partner",
   name: "partner",
-  type: "document",
+  type: "object",
   fields: [
     {
       title: "Title",
@@ -27,11 +27,6 @@ export default {
       title: "Link Text",
       name: "linkText",
       type: "string",
-    },
-    {
-      name: "priority",
-      title: "Priority",
-      type: "number",
     },
   ],
 };

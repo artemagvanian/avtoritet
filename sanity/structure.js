@@ -7,12 +7,32 @@ export default () =>
     .title("Content")
     .items([
       S.listItem()
-        .title("About Page")
-        .child(S.document().schemaType("aboutPage").documentId("aboutPage")),
-      S.listItem()
         .title("Home Page")
         .child(S.document().schemaType("homePage").documentId("homePage")),
-      ...S.documentTypeListItems().filter(
-        (listItem) => !["aboutPage", "homePage"].includes(listItem.getId())
-      ),
+      S.listItem()
+        .title("Platform Page")
+        .child(
+          S.document().schemaType("platformPage").documentId("platformPage")
+        ),
+      S.listItem()
+        .title("On The Way Page")
+        .child(
+          S.document().schemaType("onTheWayPage").documentId("onTheWayPage")
+        ),
+      S.listItem()
+        .title("Partner Page")
+        .child(
+          S.document().schemaType("partnerPage").documentId("partnerPage")
+        ),
+      S.listItem()
+        .title("Current Offer")
+        .child(
+          S.document().schemaType("currentOffer").documentId("currentOffer")
+        ),
+      // ...S.documentTypeListItems().filter(
+      //   (listItem) =>
+      //     !["homePage", "platformPage", "onTheWayPage", "partnerPage"].includes(
+      //       listItem.getId()
+      //     )
+      // ),
     ]);

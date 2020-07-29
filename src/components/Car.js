@@ -2,7 +2,20 @@ import React from "react";
 
 import { Card, ListGroup, Col, Carousel } from "react-bootstrap";
 
-export default function Car({ car }) {
+import SoldImage from "../assets/sold.png";
+
+import { IconContext } from "react-icons";
+import {
+  FaCalendarAlt,
+  FaTachometerAlt,
+  FaGasPump,
+  FaCar,
+  FaTruckMonster,
+  FaCogs,
+  FaHandHoldingUsd,
+} from "react-icons/fa";
+
+const Car = ({ car }) => {
   return (
     <Col xs={12} sm={6} md={4} className="my-3">
       <Card style={{ position: "relative" }}>
@@ -13,7 +26,10 @@ export default function Car({ car }) {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0,0,0,0.75)",
+            backgroundImage: `url("${SoldImage}")`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
             zIndex: 999,
             borderRadius: 5,
             color: "white",
@@ -24,9 +40,7 @@ export default function Car({ car }) {
             justifyContent: "center",
             visibility: car.sold ? "visible" : "hidden",
           }}
-        >
-          <div>Продано</div>
-        </div>
+        />
         <Carousel indicators={false}>
           {car.photos.map((photo, index) => (
             <Carousel.Item key={index}>
@@ -45,19 +59,52 @@ export default function Car({ car }) {
           <Card.Text>{car.description}</Card.Text>
         </Card.Body>
         <ListGroup>
-          <ListGroup.Item>Год выпуска: {car.manufacturingYear}</ListGroup.Item>
           <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaCalendarAlt />
+            </IconContext.Provider>
+            Год выпуска: {car.manufacturingYear}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaCar />
+            </IconContext.Provider>
             Объём двигателя: {car.engineDisplacement}
           </ListGroup.Item>
-          <ListGroup.Item>Пробег: {car.mileage} км</ListGroup.Item>
-          <ListGroup.Item>Тип топлива: {car.fuelType}</ListGroup.Item>
-          <ListGroup.Item>КПП: {car.gearbox}</ListGroup.Item>
-          <ListGroup.Item>Тип привода: {car.driveType}</ListGroup.Item>
           <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaTachometerAlt />
+            </IconContext.Provider>
+            Пробег: {car.mileage} км
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaGasPump />
+            </IconContext.Provider>
+            Тип топлива: {car.fuelType}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaCogs />
+            </IconContext.Provider>
+            КПП: {car.gearbox}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaTruckMonster />
+            </IconContext.Provider>
+            Тип привода: {car.driveType}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <IconContext.Provider value={{ style: { marginRight: "0.75em" } }}>
+              <FaHandHoldingUsd />
+            </IconContext.Provider>
             <b>Цена: {car.price}$</b>
           </ListGroup.Item>
         </ListGroup>
       </Card>
     </Col>
   );
-}
+};
+
+export default Car;
